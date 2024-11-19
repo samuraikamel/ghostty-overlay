@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="gtk">Enables the use of Adwaita when using the GTK rendering backend.</flag>
+		<flag name="doc">Build and install auto-generated documentation (requires pandoc)</flag>
+		<flag name="helpgen">Build and install the helpgen executable.</flag>
+		<flag name="bench">Build and install the benchmark executables.</flag>
+		<flag name="test-exe">Build and install test executables</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ghostty-org/ghostty</remote-id>
+	</upstream>
+</pkgmetadata>
+
+
