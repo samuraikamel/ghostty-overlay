@@ -5,17 +5,17 @@ EAPI=8
 
 inherit edo
 
-SRC_URI="ghostty-source.tar.gz"
+# just a bandaid. we can actually fix it if ghostty releases before zig eclass is merged.
+#REQUIRE="network-sandbox"
 DESCRIPTION="Fast, native, feature-rich terminal emulator pushing modern features."
 HOMEPAGE="https://github.com/ghostty-org/ghostty"
-RESTRICT=network-sandbox
+SRC_URI="ghostty-source.tar.gz"
+S="${WORKDIR}"
+LICENSE=""
+
+SLOT="0"
 
 IUSE="+gtk doc helpgen bench test-exe"
-
-S="${WORKDIR}"
-
-LICENSE=""
-SLOT="0"
 
 EZIG_MIN="0.13"
 EZIG_MAX_EXCLUSIVE="0.14"
@@ -37,7 +37,6 @@ BDEPEND="
 	|| ( dev-lang/zig-bin:${EZIG_MIN} dev-lang/zig:${EZIG_MIN} )
 	doc? ( app-text/pandoc )
 "
-
 
 zig-set_EZIG() {
 	[[ -n ${EZIG} ]] && return
@@ -81,7 +80,6 @@ zig-set_EZIG() {
 	export EZIG="${selected}"
 	export EZIG_VER="${selected_ver}"
 }
-
 
 ezig() {
 	zig-set_EZIG
