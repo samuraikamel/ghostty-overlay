@@ -10,5 +10,6 @@ Gentoo overlay for Ghostty related ebuilds
 ```
 
 To install ghostty using this ebuild the network-sandbox needs to be temporarly disabled.
+
 `FEATURES="-network-sandbox" emerge gui-apps/ghostty`
 
