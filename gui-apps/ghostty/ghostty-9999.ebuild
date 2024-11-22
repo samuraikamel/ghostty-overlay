@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo
+inherit edo desktop
 
 # just a bandaid. we can actually fix it if ghostty releases before zig eclass is merged.
 #REQUIRE="network-sandbox"
@@ -107,4 +107,18 @@ src_test() {
 
 src_install() {
 	ezig build install "${ZBS_ARGS[@]}" --prefix "${ED}/usr" || die
+
+	domenu dist/linux/app.desktop
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
 }
